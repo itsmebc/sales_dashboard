@@ -1,0 +1,34 @@
+Package: sales
+Title: PKG_TITLE
+Version: 0.0.0.9000
+Authors@R: person('Brian', 'Chen', email = 'cbrian7999@gmail.com', role = c('cre', 'aut'))
+Description: PKG_DESC.
+License: What license is it under?
+Imports: 
+    attempt,
+    config (>= 0.3.1),
+    dplyr,
+    DT,
+    echarts4r,
+    ggthemes,
+    glue,
+    golem (>= 0.3.1),
+    htmltools,
+    janitor,
+    lubridate,
+    magrittr,
+    processx,
+    scales,
+    shiny (>= 1.7.1),
+    shinydashboard,
+    tidyr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2
+Suggests: 
+    spelling,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Language: en-US
+Depends: 
+    R (>= 2.10)
