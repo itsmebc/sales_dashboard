@@ -1,4 +1,6 @@
 # sales_dashboard
-Golem/ modules/ unit testing
+R/Shiny dashboard built on golem framework.
 
-Work in progress
+Try it out! <br>
+library(devtools) <br>
+install_github("itsmebc/sales_dashboard") <br>
