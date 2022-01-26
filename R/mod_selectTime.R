@@ -14,7 +14,11 @@ mod_selectTime_ui <- function(id){
   ns <- NS(id)
   tagList(
     
-    box(status="primary", class='rightAlign',
+    box(
+      solidHeader = TRUE,
+      title = "Select time range",
+      status="primary", 
+      collapsible=TRUE,
       column(width=2, h5("Year")), 
       column(width=4, selectInput(ns("selectYear"), label=NULL, choices = c(2003:2005), 
                          selected="2003", width="100")),

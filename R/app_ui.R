@@ -18,13 +18,13 @@ app_ui <- function(request) {
           dashboardSidebar(
             sidebarMenu(
               menuItem("Overview", tabName = "overview", icon = icon("dashboard")),
-              menuItem("Time Range", tabName = "time", icon = icon("dashboard")),
+              menuItem("Time Range", tabName = "time", icon = icon("time", lib="glyphicon")),
               hr(),
-              menuItem("Insights", icon = icon("th"), tabName = "insights",
+              menuItem("Log", tabName = "log", icon = icon("list-alt", lib="glyphicon")),
+              hr(),
+              menuItem("Insights", icon = icon("signal", lib="glyphicon"), tabName = "insights",
                        badgeLabel = "new", badgeColor = "green"),
-              menuItem("Log", tabName = "log", icon = icon("dashboard")),
-              hr(),
-              menuItem("Analysis", tabName = "analysis", icon = icon("dashboard"))
+              menuItem("Analysis", tabName = "analysis", icon = icon("equalizer", lib="glyphicon"))
             )
           ),
           
@@ -37,10 +37,11 @@ app_ui <- function(request) {
                       fluidRow(mod_selectTime_ui("selectTime_ui_1")), #year/month selector
                       mod_dashboardTab_ui("dashboardTab_ui_1")),   
               
-              tabItem(tabName = "insights"), 
-              
               tabItem(tabName = "log",                    #log of all sales
                       mod_logTab_ui("logTab_ui_1")), 
+              
+              tabItem(tabName = "insights",               #insights tab
+                      mod_insights_ui("insights_ui_1")), 
               
               tabItem(tabName = "analysis",
                       h2("Analysis tab content")

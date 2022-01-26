@@ -25,6 +25,8 @@ mod_overviewTab_ui <- function(id){
     
     fluidRow(
             box(width=12,
+                solidHeader = TRUE,
+                title = "Sales by Year",
                 fluidRow(
                   splitLayout(echarts4rOutput(ns("all_sales")), 
                               echarts4rOutput(ns("all_sales_year")))
@@ -33,14 +35,24 @@ mod_overviewTab_ui <- function(id){
             ),
     
     fluidRow(
-      box(echarts4rOutput(ns("plot2")), width=4),
-      box(echarts4rOutput(ns("plot3")), width=5),
-      box(echarts4rOutput(ns("plot4")), width=3)
+      box(
+        solidHeader = TRUE, 
+        status="warning",
+        title = "Sales by Country",
+        echarts4rOutput(ns("countrySales")), width=12)
     ),
     
     fluidRow(
-      box(echarts4rOutput(ns("statusBar")), width=8),
-      box(echarts4rOutput(ns("statusPie")), width=4)
+      box(
+        solidHeader = TRUE, 
+        status="warning",
+        title = "Average Price per Status",
+        echarts4rOutput(ns("statusBar")), width=8),
+      box(
+        solidHeader = TRUE, 
+        status="warning",
+        title = "Package Status",
+        echarts4rOutput(ns("statusPie")), width=4)
     )
     
   )
@@ -83,14 +95,16 @@ mod_overviewTab_server <- function(id){
         e_tooltip()
     })
     
-    output$plot2 <- renderEcharts4r({
+    output$countrySales <- renderEcharts4r({
+      raw_sales %>%
+        select(country, sales) %>%
+        group_by(country) %>%
+        summarize(Revenue = sum(sales)) %>%
+        e_charts(country) %>%
+        e_bar(Revenue) %>%
+        e_tooltip()
     })
-    
-    output$plot3 <- renderEcharts4r({
-    })
-    
-    output$plot4 <- renderEcharts4r({
-    })
+
     
     output$statusBar <- renderEcharts4r({
       raw_sales %>% 

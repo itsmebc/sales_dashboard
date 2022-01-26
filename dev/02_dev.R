@@ -31,8 +31,8 @@ usethis::use_package( "DT" )
 golem::add_module( name = "selectTime" ) # Filter time
 golem::add_module( name = "dashboardTab" ) # Time range tab
 golem::add_module( name = "overviewTab" ) #Overview tab
-golem::add_module( name = "dashboardTab" )
 golem::add_module( name = "logTab" ) #log tab
+golem::add_module( name = "insights" )
 
 ## Add helper functions ----
 ## Creates fct_* and utils_*

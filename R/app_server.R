@@ -16,4 +16,5 @@ app_server <- function( input, output, session ) {
   mod_selectTime_server("selectTime_ui_1", filters = filters) #year/month selector
   mod_dashboardTab_server("dashboardTab_ui_1", filters = filters) #main dashboard
   mod_logTab_server("logTab_ui_1")
+  mod_insights_server("insights_ui_1")
 }

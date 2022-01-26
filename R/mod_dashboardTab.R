@@ -31,22 +31,25 @@ mod_dashboardTab_ui <- function(id){
              column(width = 12,
                     box(width = NULL, 
                         height='250px', 
-                        solidHeader = TRUE, 
-                        status="primary",
-                        title = "Calendar",
+                        solidHeader = TRUE,
+                        status='warning',
+                        title = "Monthly Revenue Calendar",
                         echarts4rOutput(ns("monthlyRevenue"))),
                     box(width = NULL, 
-                        height = '250px', 
-                        solidHeader = TRUE, 
-                        status = "primary",
-                        title = "Two",
-                        echarts4rOutput(ns("plot2"))))),
+                        height = '420px',
+                        status='warning',
+                        solidHeader = TRUE,
+                        title = "Shipped Gauge",
+                        echarts4rOutput(ns("statusGauge"))))),
       box(width = 5, 
-          height = '520px', 
-          solidHeader = TRUE, 
-          status = "primary",
-          title = "Items ordered",
-          tableOutput(ns("commonOrders"))),
+          status='warning',
+          solidHeader = TRUE,
+          title = "Items Ordered",
+          tableOutput(ns("commonOrders")),
+          
+          hr(),
+          
+          tableOutput(ns("customerItems"))),
           
       )
     
@@ -78,7 +81,7 @@ mod_dashboardTab_server <- function(id, filters){
     
     #growth box
     output$growthBox = shinydashboard::renderValueBox({
-      shinydashboard::valueBox(growth(), "Growth")
+      shinydashboard::valueBox(growth(), "Growth Last 30 Days")
     })
     
     trackerfinder = function(df) {
@@ -148,9 +151,10 @@ mod_dashboardTab_server <- function(id, filters){
     
     
     
-    output$plot2 <- renderEcharts4r({
+    output$statusGauge <- renderEcharts4r({
       e_charts() %>%
         e_gauge(raw_sales %>% 
+                  filter(year(orderdate) == filters$year, month(orderdate) == filters$month) %>%
                   group_by(status) %>%
                   count() %>%
                   ungroup() %>%
@@ -176,6 +180,16 @@ mod_dashboardTab_server <- function(id, filters){
                `Orders` = count)
     })
   
+    output$customerItems = renderTable({
+      raw_sales %>%
+        filter(year(orderdate) == filters$year, month(orderdate) == filters$month) %>%
+        select(customername, quantityordered) %>%
+        group_by(customername) %>%
+        summarize(quantityordered = sum(quantityordered)) %>%
+        rename(Customer = customername,
+               `Items Ordered` = quantityordered) %>%
+        mutate(`Items Ordered` = as.integer(`Items Ordered`))
+    })
    
   })
 }
