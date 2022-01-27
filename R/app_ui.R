@@ -13,7 +13,7 @@ app_ui <- function(request) {
     # Your application UI logic 
     ui <- dashboardPage(
       
-          dashboardHeader(),
+          dashboardHeader(title="Dashboard"),
           
           dashboardSidebar(
             sidebarMenu(
@@ -22,13 +22,20 @@ app_ui <- function(request) {
               hr(),
               menuItem("Log", tabName = "log", icon = icon("list-alt", lib="glyphicon")),
               hr(),
-              menuItem("Insights", icon = icon("signal", lib="glyphicon"), tabName = "insights",
-                       badgeLabel = "new", badgeColor = "green"),
-              menuItem("Analysis", tabName = "analysis", icon = icon("equalizer", lib="glyphicon"))
+              menuItem("Insights", icon = icon("signal", lib="glyphicon"), tabName = "insights"),
+                       #badgeLabel = "new", badgeColor = "green"),
+              menuItem("Analysis", tabName = "analysis", icon = icon("equalizer", lib="glyphicon"), startExpanded=TRUE,
+                       menuSubItem("RFM Segmentation", tabName="rfm_segmentation"),
+                       menuSubItem("ARIMA Model", tabName="arima_model"))
             )
           ),
           
           dashboardBody(
+            
+            dashboardthemes::shinyDashboardThemes(
+              theme = 'onenote'
+            ),
+            
             tabItems(
               tabItem(tabName = "overview",
                       mod_overviewTab_ui("overviewTab_ui_1")), #main dashboard
@@ -43,13 +50,18 @@ app_ui <- function(request) {
               tabItem(tabName = "insights",               #insights tab
                       mod_insights_ui("insights_ui_1")), 
               
-              tabItem(tabName = "analysis",
-                      mod_arima_model_ui("arima_model_ui_1")
+              tabItem(tabName = "rfm_segmentation",               
+                      mod_rfm_segmentation_ui("rfm_segmentation_ui_1")),
+              
+              tabItem(tabName = "arima_model",
+                      mod_arima_model_ui("arima_model_ui_1"))
+              
+              
               )
             )
           )
     )
-  )
+  
 }
 
 #' Add external Resources to the Application

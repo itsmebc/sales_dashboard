@@ -1,12 +1,13 @@
 Package: sales
-Title: PKG_TITLE
+Title: sales
 Version: 0.0.0.9000
 Authors@R: person('Brian', 'Chen', email = 'cbrian7999@gmail.com', role = c('cre', 'aut'))
-Description: PKG_DESC.
+Description: Dashboard for a sample commerce data from https://www.kaggle.com/kyanyoga/sample-sales-data.
 License: What license is it under?
 Imports: 
     attempt,
     config (>= 0.3.1),
+    dashboardthemes,
     dplyr,
     DT,
     echarts4r,
@@ -18,10 +19,13 @@ Imports:
     janitor,
     lubridate,
     magrittr,
+    pkgload,
     processx,
+    rfm,
     scales,
     shiny (>= 1.7.1),
     shinydashboard,
+    stringr,
     tidyr
 Encoding: UTF-8
 LazyData: true

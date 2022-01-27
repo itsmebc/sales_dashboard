@@ -25,7 +25,9 @@ usethis::use_package( "echarts4r" )
 usethis::use_package( "tidyr" )
 usethis::use_package( "DT" )
 usethis::use_package( "forecast" )
-
+usethis::use_package( "rfm" )
+usethis::use_package( "dashboardthemes" )
+usethis::use_package( "stringr" )
 
 ## Add modules ----
 ## Create a module infrastructure in R/
@@ -34,8 +36,8 @@ golem::add_module( name = "dashboardTab" ) # Time range tab
 golem::add_module( name = "overviewTab" ) #Overview tab
 golem::add_module( name = "logTab" ) #log tab
 golem::add_module( name = "insights" ) #insights
-golem::add_module( name = "analysis" )
 golem::add_module( name = "arima_model" )
+golem::add_module( name = "rfm_segmentation" )
 
 ## Add helper functions ----
 ## Creates fct_* and utils_*

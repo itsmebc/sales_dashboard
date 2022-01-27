@@ -20,5 +20,8 @@ app_server <- function( input, output, session ) {
   
   mod_insights_server("insights_ui_1")
   
+  mod_rfm_segmentation_server("rfm_segmentation_ui_1")
+  
   mod_arima_model_server("arima_model_ui_1")
+  
 }

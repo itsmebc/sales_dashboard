@@ -26,6 +26,7 @@ mod_overviewTab_ui <- function(id){
     fluidRow(
             box(width=12,
                 solidHeader = TRUE,
+                status="primary",
                 title = "Sales by Year",
                 fluidRow(
                   splitLayout(echarts4rOutput(ns("all_sales")), 

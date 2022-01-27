@@ -20,8 +20,8 @@
 ## 
 golem::fill_desc(
   pkg_name = "sales", # The Name of the package containing the App 
-  pkg_title = "PKG_TITLE", # The Title of the package containing the App 
-  pkg_description = "PKG_DESC.", # The Description of the package containing the App 
+  pkg_title = "sales", # The Title of the package containing the App 
+  pkg_description = "Dashboard for a sample commerce data from https://www.kaggle.com/kyanyoga/sample-sales-data.", # The Description of the package containing the App 
   author_first_name = "Brian", # Your First Name
   author_last_name = "Chen", # Your Last Name
   author_email = "cbrian7999@gmail.com", # Your Email
