@@ -44,7 +44,7 @@ app_ui <- function(request) {
                       mod_insights_ui("insights_ui_1")), 
               
               tabItem(tabName = "analysis",
-                      h2("Analysis tab content")
+                      mod_arima_model_ui("arima_model_ui_1")
               )
             )
           )

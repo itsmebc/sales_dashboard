@@ -24,6 +24,7 @@ usethis::use_package( "shinydashboard" )
 usethis::use_package( "echarts4r" )
 usethis::use_package( "tidyr" )
 usethis::use_package( "DT" )
+usethis::use_package( "forecast" )
 
 
 ## Add modules ----
@@ -32,7 +33,9 @@ golem::add_module( name = "selectTime" ) # Filter time
 golem::add_module( name = "dashboardTab" ) # Time range tab
 golem::add_module( name = "overviewTab" ) #Overview tab
 golem::add_module( name = "logTab" ) #log tab
-golem::add_module( name = "insights" )
+golem::add_module( name = "insights" ) #insights
+golem::add_module( name = "analysis" )
+golem::add_module( name = "arima_model" )
 
 ## Add helper functions ----
 ## Creates fct_* and utils_*

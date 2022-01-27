@@ -10,6 +10,7 @@ Imports:
     dplyr,
     DT,
     echarts4r,
+    forecast,
     ggthemes,
     glue,
     golem (>= 0.3.1),
