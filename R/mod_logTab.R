@@ -22,15 +22,9 @@ mod_logTab_server <- function(id){
     ns <- session$ns
       output$logDT = DT::renderDT(
         raw_sales %>%
-          mutate(orderdate = as.Date(orderdate)), 
-        filter="top",
-        extensions = 'FixedColumns',
-        options = list(
-          dom = 't',
-          scrollX = TRUE,
-          fixedColumns = TRUE,
-          list(6, 'desc')
-        )
+          mutate(orderdate = as.Date(orderdate)),
+        
+          extensions = 'Responsive'
       )
   })
 }
